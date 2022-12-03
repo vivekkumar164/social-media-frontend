@@ -12,7 +12,7 @@ import { uploadImage, uploadPost } from '../../Actions/uploadAction'
 const PostShare = () => {
 
     const loading = useSelector(state => state.postReducer.uploading)
-
+    const serverPublic = process.env.REACT_APP_PUBLIC_FOLDER;
     const [image, setImage] = useState(null);
     const imageRef = useRef();
     const desc = useRef();
@@ -32,7 +32,7 @@ const PostShare = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
+        console.log('user',user)
         const newPost = {
             userId: user._id,
             desc: desc.current.value
@@ -57,7 +57,7 @@ const PostShare = () => {
     }
     return (
         <div className='PostShare'>
-            <img src={ProfileImage} alt="" />
+            <img src={user.profilePicture ? serverPublic + user.profilePicture : serverPublic + "deafultProfile.jpg"} alt="" />
             <div>
                 <input
                     ref={desc}
