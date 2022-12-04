@@ -8,12 +8,10 @@ import './Posts.css'
 const Posts = () => {
 
   const dispatch = useDispatch();
-  const {user} = useSelector((state)=>state.authReducer.authData);
+  const {user} = useSelector((state)=>state.authReducer.authData.data);
   const {posts,loading} = useSelector((state)=>state.postReducer);
 
   useEffect(()=>{
-   // console.log('user-------------->',user.data.user._id);
-    console.log('user-------------->',user);
     dispatch(getTimelinePosts(user._id))
   },[])
   return (

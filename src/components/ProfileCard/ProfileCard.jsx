@@ -8,7 +8,8 @@ import { Link } from 'react-router-dom'
 
 const ProfileCard = ({location}) => {
 
-    const {user} = useSelector((state)=> state.authReducer.authData);
+    const {user} = useSelector((state)=> state.authReducer.authData.data);
+    console.log('--profile card -->user',user)
     const serverPublic = process.env.REACT_APP_PUBLIC_FOLDER;
 
     const posts = useSelector((state)=>state.postReducer.posts)
@@ -16,8 +17,8 @@ const ProfileCard = ({location}) => {
     return (
         <div className='ProfileCard'>
             <div className="ProfileImages">
-                <img src={user.coverPicture ? serverPublic + user.coverPicture : serverPublic + "deafultCover.jpg" } alt="" />
-                <img src={user.profilePicture ? serverPublic + user.profilePicture : serverPublic + "deafultProfile.jpg"} alt="" />
+                <img src={user?.coverPicture ? serverPublic + user.coverPicture : serverPublic + "deafultCover.jpg" } alt="" />
+                <img src={user?.profilePicture ? serverPublic + user.profilePicture : serverPublic + "deafultProfile.jpg"} alt="" />
             </div>
 
             <div className="ProfileName">

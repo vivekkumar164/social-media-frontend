@@ -16,7 +16,7 @@ const PostShare = () => {
     const [image, setImage] = useState(null);
     const imageRef = useRef();
     const desc = useRef();
-    const { user } = useSelector((state) => state.authReducer.authData);
+    const { user } = useSelector((state) => state.authReducer.authData.data);
     const dispatch = useDispatch()
     const onImageChange = (event) => {
         if (event.target.files && event.target.files[0]) {
@@ -57,7 +57,7 @@ const PostShare = () => {
     }
     return (
         <div className='PostShare'>
-            <img src={user.profilePicture ? serverPublic + user.profilePicture : serverPublic + "deafultProfile.jpg"} alt="" />
+            <img src={user?.profilePicture ? serverPublic + user.profilePicture : serverPublic + "deafultProfile.jpg"} alt="" />
             <div>
                 <input
                     ref={desc}
