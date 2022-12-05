@@ -8,10 +8,9 @@ import { Link } from 'react-router-dom'
 
 const ProfileCard = ({location}) => {
 
-    const {user} = useSelector((state)=> state.authReducer.authData.data);
-    console.log('--profile card -->user',user)
+    const { user } = useSelector((state) => state.authReducer.authData);
     const serverPublic = process.env.REACT_APP_PUBLIC_FOLDER;
-
+   
     const posts = useSelector((state)=>state.postReducer.posts)
     
     return (
@@ -59,10 +58,10 @@ const ProfileCard = ({location}) => {
                 <hr />
             </div>
 
-
-            {location ? " ": <span>
+            
+            {location ?  <span>
                 <Link style={{textDecoration:"none", color:'inherit'}} to = {`/profile/${user._id}` } >My Profile</Link>
-                </span>}
+                </span> : " "}
 
         </div>
     )
